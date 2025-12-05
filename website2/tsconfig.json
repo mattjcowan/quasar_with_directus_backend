@@ -1,0 +1,7 @@
+{
+  "extends": "./.quasar/tsconfig.json",
+  // turn off exactOptionalPropertyTypes
+  "compilerOptions": {
+    "exactOptionalPropertyTypes": false
+  }
+}
