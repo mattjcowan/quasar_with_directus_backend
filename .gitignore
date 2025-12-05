@@ -1,0 +1,14 @@
+# Database and uploads
+data/database/
+data/uploads/
+
+# Extension build artifacts
+directus/extensions/**/node_modules/
+directus/extensions/**/dist/
+
+# Website build artifacts
+website/node_modules/
+website/dist/
+
+# Environment files
+.env

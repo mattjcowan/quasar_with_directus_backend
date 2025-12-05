@@ -1,0 +1,26 @@
+{
+  "name": "directus_extensions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "docker compose up -d --build",
+    "dev:down": "docker compose down",
+    "dev:reset": "docker compose down -v && sudo rm -rf ./data/database",
+    "recreate:directus": "docker compose rm -sf directus && docker compose up -d --build directus",
+    "recreate:website": "docker compose rm -sf website && docker compose up -d --build website",
+    "prod": "docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build --scale website=4",
+    "prod:down": "docker compose -f docker-compose.yml -f docker-compose.prod.yml down",
+    "docker:logs": "docker compose logs -f",
+    "schema:snapshot": "docker compose exec directus npx directus schema snapshot /directus/schema.yaml && docker compose cp directus:/directus/schema.yaml ./directus/schema.yaml",
+    "schema:apply": "docker compose exec directus npx directus schema apply /directus/schema.yaml",
+    "schema:diff": "docker compose exec directus npx directus schema diff /directus/schema.yaml",
+    "db:migrate": "docker compose exec directus npx directus database migrate:latest",
+    "db:rollback": "docker compose exec directus npx directus database migrate:down",
+    "generate:migration": "cd directus && npx directus database migrate:create rename_me"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
